@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - AZA School</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>AZA School</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="index.html">Материалы</a></li>
+            <li><a href="index.html">Форум</a></li>
+            <li><a href="index.html">Календарь</a></li>
+            <li><a href="index.html">Инструменты для учебы</a></li>
+            <li><a href="index.html">Новости</a></li>
+            <li><a href="about us.html">О нас</a></li>
+            <li><a href="my contact.html">Поддержать</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Регистрация</h2>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <fieldset>
+                <legend>Создайте аккаунт</legend>
+                <label for="email">Электронная почта:</label>
+                <input  id="email" name="email" placeholder="example@mail.com" >
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" >
+
+                <label for="confirmPassword">Подтвердите пароль:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Подтвердите пароль" >
+
+                <button type="submit">Зарегистрироваться</button>
+            </fieldset>
+        </form>
+        <div id="errorMessages" style="color: red;"></div>
+        <p>Уже есть аккаунт? <a href="login.html">Войдите здесь</a>.</p>
+    </section>
+
+    <section id="dateTimeSection" class="mt-4">
+        <h2>Текущая дата и время</h2>
+        <p id="currentDateTime"></p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; Bayanov Zhanibek</p>
+    <p>&copy; Eskerbek Alla-Adil</p>
+    <p>&copy; Maratov Adilkhan</p>
+</footer>
+
+<!-- Подключение внешнего JavaScript файла -->
+<script src="scripts.js"></script>
+</body>
+</html>
