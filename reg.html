@@ -31,13 +31,13 @@
             <fieldset>
                 <legend>Создайте аккаунт</legend>
                 <label for="email">Электронная почта:</label>
-                <input  id="email" name="email" placeholder="example@mail.com" >
+                <input id="email" name="email" placeholder="example@mail.com">
 
                 <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" placeholder="Введите пароль" >
+                <input type="password" id="password" name="password" placeholder="Введите пароль">
 
                 <label for="confirmPassword">Подтвердите пароль:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Подтвердите пароль" >
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Подтвердите пароль">
 
                 <button type="submit">Зарегистрироваться</button>
             </fieldset>
@@ -46,6 +46,7 @@
         <p>Уже есть аккаунт? <a href="login.html">Войдите здесь</a>.</p>
     </section>
 
+    <!-- Section to Display Current Date and Time -->
     <section id="dateTimeSection" class="mt-4">
         <h2>Текущая дата и время</h2>
         <p id="currentDateTime"></p>
@@ -58,7 +59,59 @@
     <p>&copy; Maratov Adilkhan</p>
 </footer>
 
-<!-- Подключение внешнего JavaScript файла -->
-<script src="scripts.js"></script>
+<!-- JavaScript -->
+<script>
+    // Отображение текущей даты и времени
+    function displayCurrentDateTime() {
+        const now = new Date();
+        const dateTimeString = now.toLocaleString("ru-RU", { dateStyle: "full", timeStyle: "medium" });
+        document.getElementById("currentDateTime").textContent = dateTimeString;
+    }
+    displayCurrentDateTime();
+    setInterval(displayCurrentDateTime, 1000); // Обновление каждую секунду
+
+    // Валидация формы и динамическое изменение стиля
+    function validateForm() {
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const errorMessages = document.getElementById("errorMessages");
+        
+        // Очистка предыдущих сообщений об ошибках
+        errorMessages.textContent = "";
+        
+        // Проверка электронной почты
+        if (!email.value.includes("@")) {
+            errorMessages.textContent += "Введите правильный email. ";
+            email.style.borderColor = "red";
+        } else {
+            email.style.borderColor = ""; // Сброс цвета
+        }
+
+        // Проверка пароля и его подтверждения
+        if (password.value !== confirmPassword.value) {
+            errorMessages.textContent += "Пароли не совпадают.";
+            password.style.borderColor = "red";
+            confirmPassword.style.borderColor = "red";
+        } else {
+            password.style.borderColor = ""; // Сброс цвета
+            confirmPassword.style.borderColor = "";
+        }
+
+        // Если есть сообщения об ошибках, прервать отправку формы
+        if (errorMessages.textContent) {
+            return false;
+        }
+
+        // Если валидация пройдена, отобразить сообщение и перенаправить на главную страницу
+        alert("Вы успешно зарегистрировались!");
+        window.location.href = "index.html"; // Перенаправление на главную страницу
+        return false; // Прервать отправку формы для демонстрации
+    }
+</script>
+
+
+
 </body>
+
 </html>
