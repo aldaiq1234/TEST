@@ -6,49 +6,122 @@
     <title>Our Contacts</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Header and layout styling */
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
         h1 {
+            text-align: center;
+            color: #16a085;
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+
+        /* Стили для контейнера с контактами */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px auto;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .column {
+            width: 280px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .column h2 {
+            color: #16a085;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .column p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        /* Стили для социальных ссылок */
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #16a085;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .social-link img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-link:hover {
+            color: #138d75;
+        }
+
+        .social-link:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Кнопка "Главная" */
+        .back-home {
             text-align: center;
             margin-top: 20px;
         }
 
-        .container {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
+        .back-home a {
+            color: #16a085;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
-        .column {
-            width: 30%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .column h2 {
-            text-align: center;
-        }
-
-        .back-home {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        /* Styling for the popup form */
-        .popup {
+        /* Стили для всплывающей формы */
+        .popup, .overlay {
             display: none;
             position: fixed;
+            z-index: 10;
+        }
+
+        .popup {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 10;
-            background-color: white;
-            padding: 30px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
+            text-align: center;
         }
 
         .popup h2 {
             margin-top: 0;
+            color: #16a085;
         }
 
         .popup input[type="text"],
@@ -56,17 +129,20 @@
             width: 100%;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 5px;
+            font-size: 1rem;
         }
 
         .popup button {
             padding: 10px 20px;
-            background-color: #28a745;
+            background-color: #16a085;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
 
         .popup button.close-btn {
@@ -74,112 +150,58 @@
             margin-top: 10px;
         }
 
-        /* Error message styling */
-        .error {
-            color: red;
-            margin-top: 5px;
-            display: none;
+        .popup button:hover {
+            background-color: #138d75;
         }
 
         /* Full-page overlay */
         .overlay {
-            display: none;
-            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 5;
+        }
+
+        /* Error message */
+        .error {
+            color: red;
+            display: none;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Contact Us</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="index.html">Материалы</a></li>
-                <li><a href="index.html">Форум</a></li>
-                <li><a href="index.html">Календарь</a></li>
-                <li><a href="index.html">Инструменты для учебы</a></li>
-                <li><a href="index.html">Новости</a></li>
-                <li><a href="about us.html">О нас</a></li>
-                <li><a href="my contact.html">Поддержать</a></li>
-            </ul>
-        </nav>
     </header>
 
     <div class="container">
         <div class="column">
             <h2>Eskerbek Alla-Adil</h2>
-            <p>Email: AlDick@gmail.com</p>
-            <p><a href="https://t.me/eskerbek"><img src="tg.png" alt="Telegram" width="50" height="36">Telegram</a></p>
-            <p><a href="https://www.instagram.com/cristiano/"><img src="inst.png" alt="Instagram" width="50" height="36">Instagram</a></p>
+            <p>Email: aeskerbek5@gmail.com</p>
+            <a href="https://t.me/eskerbek" class="social-link"><img src="tg.png" alt="Telegram">Telegram</a>
+            <a href="https://www.instagram.com/eskerbek/" class="social-link"><img src="inst.png" alt="Instagram">Instagram</a>
         </div>
         <div class="column">
             <h2>Bayanov Zhanibek</h2>
             <p>Email: janikbayan@gmail.com</p>
-            <p><a href="https://t.me/zhanb6"><img src="tg.png" alt="Telegram" width="50" height="36">Telegram</a></p>
-            <p><a href="https://www.instagram.com/therock/"><img src="inst.png" alt="Instagram" width="50" height="36">Instagram</a></p>
+            <a href="https://t.me/zhanb6" class="social-link"><img src="tg.png" alt="Telegram">Telegram</a>
+            <a href="https://www.instagram.com/zhony978/" class="social-link"><img src="inst.png" alt="Instagram">Instagram</a>
         </div>
         <div class="column">
             <h2>Maratov Adilkhan</h2>
             <p>Email: AdilkhanM@gmail.com</p>
-            <p><a href="https://t.me/aratovmadilkhan"><img src="tg.png" alt="Telegram" width="50" height="36">Telegram</a></p>
-            <p><a href="https://www.instagram.com/johncena/"><img src="inst.png" alt="Instagram" width="50" height="36">Instagram</a></p>
+            <a href="https://t.me/aratovmadilkhan" class="social-link"><img src="tg.png" alt="Telegram">Telegram</a>
+            <a href="https://www.instagram.com/doomed.m/" class="social-link"><img src="inst.png" alt="Instagram">Instagram</a>
         </div>
     </div>
 
     <div class="back-home">
         <a href="index.html">Главная</a>
     </div>
+    <script src="theme.js"></script>
 
-    <!-- Button to trigger popup -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button onclick="openPopup()">Contact Us</button>
-    </div>
 
-    <!-- Popup Form -->
-    <div id="popupForm" class="popup">
-        <h2>Contact Form</h2>
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <div id="errorMsg" class="error">Please enter a valid email address.</div>
-        <button onclick="validateForm()">Submit</button>
-        <button class="close-btn" onclick="closePopup()">Close</button>
-    </div>
-
-    <!-- Overlay -->
-    <div id="overlay" class="overlay" onclick="closePopup()"></div>
-
-    <script>
-        // Function to open the popup
-        function openPopup() {
-            document.getElementById('popupForm').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        // Function to close the popup
-        function closePopup() {
-            document.getElementById('popupForm').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        // Function to validate email and display error message
-        function validateForm() {
-            const email = document.getElementById('email').value;
-            const errorMsg = document.getElementById('errorMsg');
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            if (!emailPattern.test(email)) {
-                errorMsg.style.display = 'block';
-            } else {
-                alert('Form submitted successfully!');
-                closePopup();
-            }
-        }
-    </script>
 </body>
 </html>
