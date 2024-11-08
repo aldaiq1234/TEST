@@ -6,6 +6,7 @@
     <title>AZA School</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -16,63 +17,100 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#home">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="#study-materials">Материалы</a></li>
                     <li class="nav-item"><a class="nav-link" href="#forum">Форум</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Календарь</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tools">Инструменты для учебы</a></li>
                     <li class="nav-item"><a class="nav-link" href="#news">Новости</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Поддержать</a></li>
                 </ul>
-                <div class="auth-links ml-auto">
+                <div id="authLinks" class="ml-auto">
                     <a class="btn btn-primary btn-sm" href="login.html">Вход</a>
                     <a class="btn btn-secondary btn-sm" href="reg.html">Регистрация</a>
+                </div>
+                <div id="userInfo" class="user-info-inline" style="display: none;">
+                    <span id="userName" class="user-name"></span>
+                    <span id="userRole" class="user-role"></span>
+                    <span id="userInterest" class="user-interest"></span>
+                    <button onclick="logout()" class="btn btn-logout">Выйти</button>
+                </div>     
+                
                 </div>
             </div>
         </nav>
     </header>
-    
+  
 
     <main class="container mt-4">
         <section id="home">
-            <h2>Главная</h2>
-            <p>Добро пожаловать на наш сайт!</p>
-            <button class="btn btn-warning" onclick="changeBackgroundColor()">Изменить цвет фона</button>
+            <h2 align="center">Главная</h2>
+            <p align="center">Добро пожаловать на наш сайт!</p>
+            <section>
+                
+            
+                <div class="filter-container">
+                    <label for="user-role">Кто вы?</label>
+                    <select id="user-role">
+                        <option value="" disabled selected>Выберите вариант</option>
+                        <option value="student">Ученик</option>
+                        <option value="university-student">Студент</option>
+                        <option value="teacher">Учитель</option>
+                    </select>
+            
+                    <label for="interest">Что вас интересует?</label>
+                    <select id="interest">
+                        <option value="" disabled selected>Выберите вариант</option>
+                        <option value="work">Работа</option>
+                        <option value="study">Учеба</option>
+                        <option value="just-visiting">Просто посетил сайт</option>
+                    </select>
+            
+                    <button onclick="applyFilters()">Применить</button>
+                </div>
+                
+                <div id="filter-results" class="results-container">
+                    <!-- Filter results will be displayed here -->
+                </div>
+            </section>
+            
         </section>
 
-        <section id="study-materials">
+        <section id="study-materials" class="materials-section">
             <h2>Учебные материалы</h2>
             <p>Здесь вы можете найти лекции, конспекты и учебные материалы для вашего обучения.</p>
-            <figure>
-                <img src="file:///C:/Users/Алдик/Desktop/webpr/material.png" alt="Учебные материалы" class="img-fluid" width="500">
-                <figcaption>Учебные материалы доступны для всех студентов.</figcaption>
-            </figure>
-            <blockquote cite="https://example.com/source">
-                "Образование — это самое мощное оружие, которое вы можете использовать, чтобы изменить мир." — Нельсон Мандела
-            </blockquote>
-            <p><a href="useful.html" class="btn btn-info">Список полезных сайтов</a></p>
+            <div class="materials-image-container">
+                <img src="https://i.gifer.com/9zrO.gif" alt="Учебные материалы" class="materials-image">
+            </div>
+            <p class="quote">Образование — это самое мощное оружие, которое вы можете использовать, чтобы изменить мир. — Нельсон Мандела</p>
+            <a href="useful.html" class="btn btn-custom">Список полезных сайтов</a>
         </section>
 
-        <section id="forum">
-            <h2>Форум</h2>
-            <p>Присоединяйтесь к нашему сообществу и обсуждайте учебные темы с другими студентами.</p>
-            <figure>
-                <img src="file:///C:/Users/Алдик/Desktop/webpr/chat.png" alt="Форум" class="img-fluid" width="400">
-                <figcaption>Форум для обсуждения различных учебных вопросов.</figcaption>
-            </figure>
-            <ul>
-                <li><a href="https://t.me/+Vq12E9G7uxA5OGYy">Telegram</a></li>
-                <li><a href="https://chat.whatsapp.com/Gfld5PznPxmEGLrbYRY6U2">Whatsapp</a></li>
-                <li><a href="https://www.instagram.com/join.a.groupchat/?hl=en">Instagram</a></li>
+        <section id="forum" class="forum-section">
+            <h2 align="center">Форум</h2>
+            <p align="center">Присоединяйтесь к нашему сообществу и обсуждайте учебные темы с другими студентами.</p>
+            <ul class="forum-links">
+                <li><a href="https://t.me/+zhrN7BHmwO1lNzYy" target="_blank">Telegram</a></li>
+                <li><a href="https://chat.whatsapp.com/yourwhatsapplink" target="_blank">WhatsApp</a></li>
+                <li><a href="https://www.instagram.com/yourinstagramlink" target="_blank">Instagram</a></li>
             </ul>
-        </section>
 
-        <section id="events">
-            <h2>Календарь событий</h2>
-            <p>Смотрите важные учебные события, дедлайны и мероприятия.</p>
-        </section>
-
+            <section id="achievements" class="text-center">
+                <h2>Наши достижения</h2>
+                <div class="achievement-counters">
+                    <div class="achievement">
+                        <h3><span class="counter" data-target="1000">150</span>+</h3>
+                        <p>Довольных студентов</p>
+                    </div>
+                    <div class="achievement">
+                        <h3><span class="counter" data-target="95">92</span>%</h3>
+                        <p>Сдаваемость экзаменов</p>
+                    </div>
+                    <div class="achievement">
+                        <h3><span class="counter" data-target="200">10</span>+</h3>
+                        <p>Проведенных курсов</p>
+                    </div>
+                </div>
+            </section>
+             
         <section id="tools" class="mb-4">
             <h2>Инструменты для учебы</h2>
             <p>Используйте наши полезные инструменты, такие как калькуляторы, планировщики задач и генераторы цитат.</p>
@@ -81,7 +119,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Калькуляторы</h5>
-                            <p class="card-text">Инструменты для быстрого расчета различных математических задач. <a href="https://mathsolver.microsoft.com/ru/algebra-calculator" class="btn btn-link">Посетите калькулятор</a></p>
+                            <p class="card-text">Инструменты для быстрого расчета различных математических задач.</p>
+                            <a href="https://mathsolver.microsoft.com/ru/algebra-calculator" class="btn btn-link">Посетите калькулятор</a>
                         </div>
                     </div>
                 </div>
@@ -89,85 +128,119 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Планировщики задач</h5>
-                            <p class="card-text">Программы для организации и управления задачами. <a href="https://miro.com/ru/" class="btn btn-link">Удобный планировщик</a></p>
+                            <p class="card-text">Программы для организации и управления задачами.</p>
+                            <a href="https://miro.com/ru/" class="btn btn-link">Удобный планировщик</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Генераторы цитат</h5>
-                            <p class="card-text">Инструменты для создания случайных цитат и высказываний. <a href="https://www.scribbr.com/citation/generator/" class="btn btn-link">Генератор цитат и референсов</a></p>
+                            <p class="card-text">Инструменты для создания случайных цитат и высказываний.</p>
+                            <a href="https://www.scribbr.com/citation/generator/" class="btn btn-link">Генератор цитат и референсов</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="news">
-            <h2>Новости</h2>
-            <p><strong>Здесь вы можете ознакомиться с последними новостями нашего проекта.</strong></p>
-        </section>
-
-        <section id="about">
-            <h2>О нас</h2>
-            <p><a href="about us.html" target="_blank">Здесь вы можете узнать больше о нашем проекте.</a></p>
-        </section>
-
-        <section id="contact">
-            <h2>Поддержать</h2>
-            <p>Kaspi: 8-705-483-73-15<br>Halyk: 8-708-542-46-24</p>
-        </section>
-        
-        <section id="read-more">
-            <p id="moreContent" style="display: none;">
-                Это дополнительный текст, который вы можете увидеть, нажав на кнопку.
-            </p>
-            <button class="btn btn-primary" onclick="toggleContent()">Читать дальше</button>
-        </section>
-        <section id="rating">
-            <h2>Оцените нас</h2>
-            <div class="stars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <audio id="hoverSound" src="file:///C:/Users/Алдик/Desktop/45435a970c52904.mp3" preload="auto"></audio>
-        </section>
-        <section id="drag-drop" class="mt-4">
-            <h2>Перетащите изображение сюда</h2>
-            <div id="drop-area" class="drop-area">
-                <p>Выберите фото любимого учителя с карусели и перекиньте его сюда:))</p>
-            </div>
-        </section>
         
 
-        <section id="carousel" class="mt-4">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <section id="news" class="mb-4">
+            <h2 class="text-center mt-4">Новости</h2>
+            <p class="text-center">Здесь вы можете ознакомиться с последними новостями нашего проекта.</p>
+        
+            <!-- Карусель с новостями -->
+            <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#newsCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#newsCarousel" data-slide-to="1"></li>
+                    <li data-target="#newsCarousel" data-slide-to="2"></li>
+                </ol>
                 <div class="carousel-inner">
+                    <!-- Новость 1 -->
                     <div class="carousel-item active">
-                        <img src="file:///C:/Users/Алдик/Desktop/webpr/черный.jpg" class="d-block" alt="Изображение 1">
+                        <img src="https://sun9-78.userapi.com/impg/bbt5Go7527FTWmNz4DF5s3fHGmSPqJ-dUHiWIA/f7j_eHHE2jk.jpg?size=800x400&quality=96&sign=624673dc07aa065ea21914a49bc4d8f7&type=album" class="d-block w-100" alt="Новость 1">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Для желающих набрать 100+ баллов по ЕНТ</h3>
+                            <p>Наш новый корпус открыт и готов принять студентов с улучшенными условиями для учебы.</p>
+                        </div>
                     </div>
+                    <!-- Новость 2 -->
                     <div class="carousel-item">
-                        <img src="file:///C:/Users/Алдик/Desktop/webpr/adilkhan.jpg" class="d-block" alt="Изображение 2">
+                        <img src="https://sun9-25.userapi.com/impg/83H8S8swc4KjXqIXauWf4zb7ySpmsmLC1XUbFg/XARASMlTfBc.jpg?size=800x400&quality=96&sign=a6ad27eb9ee69c83f5c3a99947404183&type=album" class="d-block w-100" alt="Новость 2">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Поменялись правила сдача AET</h3>
+                            <p>Теперь ученикам придется набирать выше 35 баллов итоговой оценки.</p>
+                        </div>
                     </div>
+                    <!-- Новость 3 -->
                     <div class="carousel-item">
-                        <img src="file:///C:/Users/Алдик/Desktop/webpr/aldik.jpg" class="d-block" alt="Изображение 3">
+                        <img src="https://sun9-22.userapi.com/impg/CXuCGYkXTlHCFB1-t_KZfVPWRJMCS8ns9hKRzw/ZDom8GjdR5E.jpg?size=800x400&quality=96&sign=b36629cc853febb66e9fceb4d1bd323b&type=album" class="d-block w-100" alt="Новость 3">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>День студента</h3>
+                            <p>Поздравляем всех студентов с днем студентов! Желаем успехов в учебе и во всех начинаниях.</p>
+                        </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Предыдущее</span>
+                    <span class="sr-only">Предыдущий</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Следующее</span>
+                    <span class="sr-only">Следующий</span>
                 </a>
+            </div>
+        </section>        
+        
+        <section id="about">
+            <h2 align="center">О нас</h2>
+            <p align="center">Создатели Zhony School и AZA School.  </p>
+            <p align="center">
+                <a href="about us.html" class="learn-more-link">Нажмите сюда, чтобы узнать больше о нашем проекте</a>
+            </p>
+            <div class="photo-gallery">
+                <img src="https://sun9-51.userapi.com/impg/CwjKZhmJSNxrOoYceWMyFs-KCd6RK7F6WNeNcQ/2eQzpydS_3o.jpg?size=1080x1080&quality=96&sign=0d9052bd0bac9ccf474a2788fb64da9e&type=album">
+                <img src="https://sun9-23.userapi.com/impg/S3XfriIGhAw0eqWGMqNGpFVFI4mSgk_yJxjJjg/-9WRBRA_4rc.jpg?size=1080x1080&quality=96&sign=e8e9b28c0360a5576be915effcb99b57&type=album" alt="Учебный процесс">
+                <img src="https://sun9-33.userapi.com/impg/kXoKtYKamSMmGXqBsSz8u3g8UHnBdL_zopAA5Q/QvoCDRevYe8.jpg?size=1080x1080&quality=96&sign=77212fb5361fbf2cf0548bdb90b97693&type=album" alt="Наш офис">
+            </div>
+        </section>
+        <section id="testimonials" class="text-center">
+            <h2>Отзывы наших студентов</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial">
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <p>"Эта школа помогла мне лучше понять сложные темы и подготовиться к экзаменам!"</p>
+                    <span>— Юрий М.</span>
+                </div>
+                <div class="testimonial">
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <p>"Отличная команда! Индивидуальный подход и качественные материалы."</p>
+                    <span>— Нурдаулет Н.</span>
+                </div>
+                <div class="testimonial">
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <p>"Рекомендую! Очень профессионально и увлекательно."</p>
+                    <span>— Нурдаулет К.</span>
+                </div>
+            </div>
+        </section>
+        <section id="write-review" class="text-center">
+            <h2>Напиши свой отзыв</h2>
+            <p>Мы будем рады узнать ваше мнение! Заполните форму ниже, чтобы поделиться своим отзывом о нашем проекте.</p>
+            <div class="review-form">
+                <form id="reviewForm">
+                    <input type="text" id="reviewerName" placeholder="Ваше имя" required>
+                    <textarea id="reviewText" placeholder="Ваш отзыв" rows="4" required></textarea>
+                    <button type="submit">Отправить отзыв</button>
+                </form>
+                <audio id="submitSound" src="123.mp3" preload="auto"></audio>
             </div>
         </section>
         
+        
+    </main>
 
     <footer>
         <div class="footer-credits">
@@ -177,11 +250,11 @@
         </div>
         <a href="my contact.html">Контакты</a>
     </footer>
-    
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="scripts.js"></script>
+
+
 </body>
 </html>
