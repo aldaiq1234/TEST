@@ -1,42 +1,42 @@
-// JavaScript Form Validation
+
+// Валидация формы регистрации
 function validateForm(event) {
-    event.preventDefault(); // Prevent form submission on error
+    event.preventDefault(); // Останавливаем отправку формы, если есть ошибки
 
-    // Clear previous error messages
+    // Очистка предыдущих сообщений об ошибках
     const errorMessages = document.getElementById('errorMessages');
-    if (errorMessages) {
-        errorMessages.innerHTML = '';
-    }
+    if (errorMessages) errorMessages.innerHTML = '';
 
-    // Get form values
-    const email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
-    const password = document.getElementById('password') ? document.getElementById('password').value : '';
-    const confirmPassword = document.getElementById('confirmPassword') ? document.getElementById('confirmPassword').value : '';
+    // Получаем значения формы
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
     let isValid = true;
 
-    // Email validation
+    // Валидация Email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
-        if (errorMessages) errorMessages.innerHTML += '<p>Электронная почта обязательна.</p>';
+        errorMessages.innerHTML += '<p>Электронная почта обязательна.</p>';
         isValid = false;
     } else if (!emailPattern.test(email)) {
-        if (errorMessages) errorMessages.innerHTML += '<p>Введите корректный адрес электронной почты.</p>';
+        errorMessages.innerHTML += '<p>Введите корректный адрес электронной почты.</p>';
         isValid = false;
     }
 
-    // Password validation
+    // Валидация пароля
     if (password.length < 6) {
-        if (errorMessages) errorMessages.innerHTML += '<p>Пароль должен содержать минимум 6 символов.</p>';
+        errorMessages.innerHTML += '<p>Пароль должен содержать минимум 6 символов.</p>';
         isValid = false;
     }
 
-    // Confirm password validation
+    // Подтверждение пароля
     if (password !== confirmPassword) {
-        if (errorMessages) errorMessages.innerHTML += '<p>Пароли не совпадают.</p>';
+        errorMessages.innerHTML += '<p>Пароли не совпадают.</p>';
         isValid = false;
     }
 
+    // Если форма не прошла валидацию, фокус на первое неправильное поле
     if (!isValid) {
         const firstInvalid = document.querySelector('input:invalid');
         if (firstInvalid) firstInvalid.focus();
@@ -46,123 +46,137 @@ function validateForm(event) {
     }
 }
 
-function changeBackgroundColor() {
-    const colors = ['#AF6A6A', '#FFFFFF', '#33FF57', '#3FBCC0', '#FF33A6'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    document.body.style.backgroundColor = randomColor;
-}
-
-// Attach form validation
-const registrationForm = document.getElementById('registrationForm');
-if (registrationForm) {
-    registrationForm.addEventListener('submit', validateForm);
-}
-
+// Функция для отображения текущей даты и времени
 function displayCurrentDateTime() {
     const dateTimeElement = document.getElementById("currentDateTime");
-    const now = new Date();
-
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-    };
-
-
-    const formattedDateTime = now.toLocaleDateString('ru-ru', options);
-
     if (dateTimeElement) {
-        dateTimeElement.textContent = formattedDateTime;
+        setInterval(() => {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+            };
+            dateTimeElement.textContent = now.toLocaleDateString("ru-RU", options);
+        }, 1000);
     }
 }
 
-// функцию вызывает сразу
-displayCurrentDateTime();
+// Обработка формы для добавления нового отзыва
+function handleReviewForm() {
+    const reviewForm = document.getElementById("reviewForm");
+    const testimonialsContainer = document.querySelector(".testimonial-cards");
 
-// время обновляется каждую секунду
-setInterval(displayCurrentDateTime, 1000);
+    if (reviewForm && testimonialsContainer) {
+        reviewForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Останавливаем отправку формы
 
-document.querySelectorAll('.faq-question').forEach((button) => {
-    button.addEventListener('click', () => {
-        const answer = button.nextElementSibling;
-        answer.classList.toggle('collapse');
-    });
-});
+            // Получаем значения из формы
+            const reviewerName = document.getElementById("reviewerName").value.trim();
+            const reviewText = document.getElementById("reviewText").value.trim();
 
-// Звук при наведении на звезды
-const hoverSound = document.getElementById('hoverSound');
-const stars = document.querySelectorAll('.star');
+            if (reviewerName && reviewText) {
+                // Показываем уведомление об успешной отправке
+                alert("Спасибо за ваш отзыв!");
 
-if (hoverSound) {
-    stars.forEach((star) => {
-        star.addEventListener('mouseenter', () => {
-            hoverSound.currentTime = 0;
-            hoverSound.play();
+                // Создаем новый элемент отзыва
+                const newTestimonial = document.createElement("div");
+                newTestimonial.classList.add("testimonial");
+                newTestimonial.innerHTML = `
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <p>"${reviewText}"</p>
+                    <span>— ${reviewerName}</span>
+                `;
+
+                // Добавляем новый отзыв в начало списка отзывов
+                testimonialsContainer.prepend(newTestimonial);
+
+                // Очищаем форму после добавления отзыва
+                reviewForm.reset();
+            }
         });
-
-        star.addEventListener('click', () => {
-            stars.forEach((s) => s.classList.remove('selected'));
-            star.classList.add('selected');
-            alert(`Вы поставили ${star.dataset.value} звезд!`);
-        });
-    });
+    } else {
+        console.error("Форма или контейнер для отзывов не найдены.");
+    }
 }
 
-// Перетаскать из карусели на ДРОП ИМД
-const carouselImages = document.querySelectorAll('.carousel-image');
-const dropArea = document.getElementById('drop-area');
+// Выполнение кода после загрузки DOM
+document.addEventListener("DOMContentLoaded", () => {
+    const reviewForm = document.getElementById("reviewForm");
+    const submitSound = document.getElementById("submitSound"); // Получаем аудио элемент
 
-if (carouselImages && dropArea) {
-    carouselImages.forEach((img) => {
-        img.setAttribute('draggable', true);
-        img.addEventListener('dragstart', (event) => {
-            event.dataTransfer.setData('text/plain', event.target.src);
-        });
-    });
+    reviewForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Останавливаем отправку формы
 
-    dropArea.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        dropArea.classList.add('highlight');
-    });
+        // Получаем значения из формы
+        const reviewerName = document.getElementById("reviewerName").value.trim();
+        const reviewText = document.getElementById("reviewText").value.trim();
 
-    dropArea.addEventListener('dragleave', () => {
-        dropArea.classList.remove('highlight');
-    });
+        if (reviewerName && reviewText) {
+            
+            submitSound.play();
 
-    dropArea.addEventListener('drop', (event) => {
-        event.preventDefault();
-        dropArea.classList.remove('highlight');
+            setTimeout(() => {
+                alert("Спасибо за ваш отзыв!");
+            }, 200); 
 
-        const imageURL = event.dataTransfer.getData('text/plain');
-        if (imageURL) {
-            const img = document.createElement('img');
-            img.src = imageURL;
-            img.classList.add('dropped-image');
-            dropArea.appendChild(img);
+            // Очищаем форму после отправки
+            reviewForm.reset();
         }
     });
-}
-// Валидация Функция - Джони
-function validateForm() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const errorMessages = document.getElementById('errorMessages');
-    errorMessages.innerHTML = '';
-
-    if (password !== confirmPassword) {
-        errorMessages.textContent = 'Пароли не совпадают!';
-        return false;
-    }
-    alert("Зарегистрировано успешно!");
-    return true;
-}
-
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-    alert("Вход выполнен успешно!");
-    window.location.href = "index.html";
 });
+// Сохранение данных пользователя в localStorage
+function saveUserData(username, role, interest) {
+    const users = JSON.parse(localStorage.getItem("users")) || {}; // Загружаем текущие данные
+    users[username] = { role, interest }; // Добавляем или обновляем данные пользователя
+    localStorage.setItem("users", JSON.stringify(users)); // Сохраняем обратно в localStorage
+}
+
+// Загрузка данных пользователя из localStorage
+function loadUserData() {
+    const username = localStorage.getItem("userName");
+    const users = JSON.parse(localStorage.getItem("users")) || {}; // Загружаем всех пользователей
+
+    if (username && users[username]) {
+        const userData = users[username]; // Данные текущего пользователя
+        document.getElementById("userName").textContent = username;
+        document.getElementById("authLinks").style.display = "none";
+        document.getElementById("userInfo").style.display = "block";
+
+        // Отображаем сохраненные данные о роли и интересах
+        if (userData.role && userData.interest) {
+            document.querySelector(".user-role").textContent = `Роль: ${userData.role}`;
+            document.querySelector(".user-interest").textContent = `Интерес: ${userData.interest}`;
+        }
+    }
+}
+
+// Функция выхода из аккаунта
+function logout() {
+    localStorage.removeItem("userName"); // Удаляем текущего пользователя
+    document.getElementById("authLinks").style.display = "block";
+    document.getElementById("userInfo").style.display = "none";
+    alert("Вы вышли из аккаунта!");
+}
+
+// Применение фильтров и сохранение данных
+function applyFilters() {
+    const username = localStorage.getItem("userName");
+    const role = document.getElementById("user-role").value;
+    const interest = document.getElementById("interest").value;
+
+    if (username && role && interest) {
+        saveUserData(username, role, interest); // Сохраняем данные для пользователя
+        alert("Ваши данные сохранены!");
+        loadUserData(); // Обновляем интерфейс
+    } else {
+        alert("Пожалуйста, выберите все поля.");
+    }
+}
+
+// Загружаем данные при загрузке страницы
+document.addEventListener("DOMContentLoaded", loadUserData);
+
