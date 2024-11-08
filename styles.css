@@ -1,336 +1,645 @@
+#userInfo {
+    display: flex;
+    align-items: center; /* Vertically centers the items */
+    margin-left: auto; /* Pushes the user info to the right */
+    font-size: 16px; /* Sets a comfortable font size */
+    color: #333; /* Sets the color for the text */
+}
+
+.user-name {
+    font-weight: bold; /* Makes the username bold */
+    margin-right: 5px; /* Space between username and role */
+}
+
+.user-role, .user-interest {
+    margin-right: 10px; /* Space between role and interest */
+}
+
+.btn-logout {
+    background-color: #28a745; /* Green background for the button */
+    color: #fff; /* White text */
+    border: none; /* Removes default border */
+    border-radius: 5px; /* Rounds the corners */
+    padding: 5px 10px; /* Padding for the button */
+    cursor: pointer; /* Changes cursor to pointer */
+    font-size: 14px; /* Sets font size for the button */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn-logout:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Основные стили для body и шрифтов */
 body {
-    font-family: Lato, sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
-    line-height: 1.5;
-    color: #333;
+    line-height: 1.6;
+    color: #2c3e50;
     margin: 0;
     padding: 0;
-}
-header h1 {
-    margin-left: 20px; 
+    background: linear-gradient(135deg, #f0f4f8, #e3e9ef);
 }
 
+/* Стили для header и навигации */
 header {
-    
-    background-color:#1f63b7;
+    background: linear-gradient(135deg, #34495e, #1abc9c);
     color: white;
-    padding: 10px 0;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
-    gap: 20px;
-    justify-content: center; 
-}
-
-.auth-links {
-    margin-left: auto;
-    display: flex;
-    gap: 15px;
+    gap: 25px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffdb58;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
 }
 
+/* Основные стили для контента */
 main {
-    padding: 20px;
+    padding: 40px;
 }
+
 
 section {
-    padding: 50px 0;
-    border-bottom: 1px solid #ccc;
+    padding: 60px 0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 h2 {
-    color: #0073e6;
+    color: #16a085;
+    font-size: 1.8rem;
+
+    margin-bottom: 20px;
 }
 
+h2::after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    background-color: #1abc9c;
+   
+    left: 0;
+    bottom: -10px;
+}
+
+/* Формы и поля ввода */
 form {
     max-width: 400px;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color: #0073e6;
+    border-color: #1abc9c;
     outline: none;
+    box-shadow: 0 0 8px rgba(26, 188, 156, 0.4);
 }
 
 button {
-    background-color: #0073e6;
+    background: linear-gradient(135deg, #1abc9c, #16a085);
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #005bb5;
+    background: linear-gradient(135deg, #16a085, #1abc9c);
+    transform: translateY(-3px);
 }
 
+/* Стили для footer */
 footer {
     text-align: center;
-    padding: 20px 0;
-    background-color: #f1f1f1;
-    color: #333;
+    padding: 30px 0;
+    background-color: #34495e;
+    color: #ecf0f1;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
 }
 
-footer a {
-    color: #0073e6;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: #005bb5;
-}
-
-/* Плавная прокрутка */
-html {
-    scroll-behavior: smooth;
-}
 .footer-credits {
     display: flex;
-    justify-content: space-around; 
-    align-items: center; 
-    flex-wrap: wrap; 
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.footer-credits p {
-    margin: 0; 
+/* Стили для ползунка */
+.rating-container {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.star {
-    font-size: 30px;
+.slider-container {
+    position: relative;
+    width: 60%;
+    margin: 20px auto;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #28a745;
+    border-radius: 50%;
     cursor: pointer;
-    color: gray;
 }
 
-.star.selected {
-    color: gold;
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -25px;
+    width: 100%;
+    font-size: 1rem;
+    color: #888;
 }
 
 
+/* Кнопка отправки */
+.submit-rating {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.submit-rating:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Стили для модальных окон */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    color: #28a745;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Стили для круглых изображений */
 .circular_image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: blue;
+    background-color: #34495e;
     display: inline-block;
-    vertical-align: middle;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .circular_image img {
     width: 100%;
-    height: auto; 
+    height: auto;
 }
-
-img.circular_image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover; 
-}
-
 
 @media (max-width: 600px) {
     nav ul {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
     }
 
     form {
-        padding: 15px;
+        padding: 20px;
     }
 }
-.faq-container {
-    width: 80%;
-    margin: 0 auto;
-}
 
+/* Стили для FAQ секции */
 .faq-item {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #1abc9c, #16a085);
     color: white;
-    width: 100%;
-    text-align: left;
-    padding: 15px;
+    padding: 18px;
     font-size: 1.1rem;
-    border: none;
     cursor: pointer;
-    outline: none;
     transition: background-color 0.3s;
 }
 
 .faq-question:hover {
-    background-color: #0056b3;
-}
-.faq-answer {
-    transition: max-height 0.3s ease-out;
+    background-color: #148f77;
 }
 
-.faq-answer {
-    max-height: 0;
-    overflow: visible;
-    transition: max-height 0.3s ease-out;
-    background-color: #f8f9fa;
-    padding: 0 15px;
+/*Размер для всех фото Карусели*/
+.carousel-item img {
+    height: 400px; /* Задайте нужную высоту для изображений */
+    width: 100%; /* Ширина на 100% от контейнера */
+    object-fit: cover; /* Заполнение контейнера, сохраняя пропорции */
+}
+/*Достижения*/
+#achievements {
+    padding: 50px 0;
+    background-color: #f9f9f9;
 }
 
-.faq-answer p {
-    margin: 15px 0;
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
+.achievement-counters {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
 }
 
-header {
-    background-color: #0073e6;
-    color: #fff;
-    padding: 1em;
+.achievement {
     text-align: center;
 }
 
-nav ul {
+.achievement h3 {
+    font-size: 2.5rem;
+    color: #16a085;
+    margin: 0;
+}
+
+.achievement p {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-top: 5px;
+}
+/* Заголовок раздела */
+#forum-title {
+    font-size: 2rem;
+    color: #16a085;
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/* Описание раздела */
+#forum-description {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Стили для ссылок */
+.forum-links {
     list-style: none;
     padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-h2 {
-    color: #0073e6;
-}
-
-.stars .star {
-    font-size: 30px;
-    cursor: pointer;
-    color: gray;
-}
-
-.stars .star.selected {
-    color: gold;
-}
-
-footer {
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 1em;
-    width: 100%;
-}
-
-.footer-credits p {
-    margin: 0;
-}
-.star {
-    font-size: 30px;
-    cursor: pointer;
-    color: gray;
-    transition: color 0.3s ease; /* анимация изменения цвета */
-}
-
-.star:hover,
-.star.selected {
-    color: gold; /* Цвет при наведении и выборе */
-    transform: scale(1.2); /* Увеличение при наведении */
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-.drop-area {
-    border: 2px dashed #0073e6;
-    padding: 20px;
-    text-align: center;
-    min-height: 200px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 15px;
+}
+/*Форум*/
+.forum-links li {
+    display: inline-block;
 }
 
-.dropped-image {
-    max-width: 100px;
-    max-height: 100px;
-    margin: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.forum-links a {
+    font-size: 1rem;
+    color: #16a085;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #16a085; /* Минималистичная рамка */
+    border-radius: 20px; /* Округлые кнопки */
+    transition: all 0.3s ease;
 }
 
-.star {
-    font-size: 30px;
-    cursor: pointer;
-    color: gray;
-    transition: color 0.3s ease;
+.forum-links a:hover {
+    background-color: #16a085;
+    color: #ffffff; /* Инверсия цветов при наведении */
+}
+/*оо нас*/
+/* Основной стиль для раздела */
+#about-us {
+    text-align: center;
+    padding: 40px;
 }
 
-.star:hover,
-.star.selected {
-    color: gold;
-    transform: scale(1.2);
-    transition: color 0.3s ease, transform 0.3s ease;
+#about-us h2 {
+    font-size: 2rem;
+    color: #16a085;
+    margin-bottom: 10px;
 }
 
-.carousel-image {
-    max-width: 100px;
-    margin: auto;
+#about-us p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Стили для фотогалереи */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+}
+
+/* Эффект при наведении */
+.photo-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+/* Основной стиль для секции */
+#study-materials {
+    background-color: #f0f4f8;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #16a085;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Стили для изображения */
+.study-image {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
     display: block;
+    transition: transform 0.3s ease;
 }
 
-.footer-credits {
+.study-image:hover {
+    transform: scale(1.05); /* Эффект увеличения при наведении */
+}
+
+/* Стиль для цитаты */
+.quote {
+    font-style: italic;
+    color: #333;
+    font-size: 1.1rem;
+    margin: 20px 0;
+}
+
+.quote-author {
+    display: block;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+/* Стиль для ссылки */
+.btn-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #16a085;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 2px solid #16a085;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-link:hover {
+    background-color: #16a085;
+    color: #ffffff;
+}
+/* Анимация появления с затуханием и эффектом подъема */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Начальное смещение вниз */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+section {
+    opacity: 0; 
+    animation: fadeInUp 1s ease forwards; 
+}
+
+
+section:nth-child(1) {
+    animation-delay: 0.2s; 
+}
+
+section:nth-child(2) {
+    animation-delay: 0.4s; 
+}
+
+section:nth-child(3) {
+    animation-delay: 0.6s; 
+}
+
+section:nth-child(4) {
+    animation-delay: 0.8s; 
+}
+/* Стили для секции отзывов */
+#testimonials {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#testimonials h2 {
+    font-size: 2rem;
+    color: #16a085;
+    margin-bottom: 20px;
+}
+
+/* Стили для карточек отзывов */
+.testimonial-cards {
     display: flex;
-    justify-content: space-around; 
-    align-items: center; 
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.footer-credits p {
-    margin: 0;
+.testimonial {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
 }
+
+.testimonial:hover {
+    transform: translateY(-5px); /* Подъем при наведении */
+}
+
+/* Стили для иконки пользователя */
+.user-icon {
+    font-size: 40px;
+    color: #16a085;
+    margin-bottom: 15px;
+}
+
+.testimonial p {
+    font-style: italic;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.testimonial span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+/* Стили для раздела "Напиши свой отзыв" */
+#write-review {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#write-review h2 {
+    font-size: 2rem;
+    color: #16a085;
+    margin-bottom: 10px;
+}
+
+#write-review p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Стили для формы отзыва */
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#reviewForm input,
+#reviewForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #ddd; /* Только нижняя граница */
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: transparent; /* Убираем задний фон */
+}
+
+#reviewForm input:focus,
+#reviewForm textarea:focus {
+    border-bottom: 2px solid #16a085; /* Подсветка при фокусе */
+}
+
+#reviewForm button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #16a085;
+    border: none;
+    border-radius: 25px; /* Закругленные края */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#reviewForm button:hover {
+    background-color: #1abc9c;
+    transform: translateY(-3px); /* Легкий подъем при наведении */
+}
+
+
+
