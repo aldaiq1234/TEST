@@ -1,33 +1,65 @@
+html {
+    scroll-behavior: smooth;
+}
+.materials-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.materials-image-container {
+    max-width: 80%; /* Ограничивает ширину изображения */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px; /* Закругленные углы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.materials-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.materials-image-container:hover .materials-image {
+    transform: scale(1.05); /* Эффект увеличения при наведении */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+
 #userInfo {
     display: flex;
-    align-items: center; /* Vertically centers the items */
-    margin-left: auto; /* Pushes the user info to the right */
-    font-size: 16px; /* Sets a comfortable font size */
-    color: #333; /* Sets the color for the text */
+    align-items: center; 
+    margin-left: auto; 
+    font-size: 16px; 
+    color: #333; 
 }
 
 .user-name {
-    font-weight: bold; /* Makes the username bold */
-    margin-right: 5px; /* Space between username and role */
+    font-weight: bold; 
+    margin-right: 5px; 
 }
 
 .user-role, .user-interest {
-    margin-right: 10px; /* Space between role and interest */
+    margin-right: 10px; 
 }
 
 .btn-logout {
-    background-color: #28a745; /* Green background for the button */
-    color: #fff; /* White text */
-    border: none; /* Removes default border */
-    border-radius: 5px; /* Rounds the corners */
-    padding: 5px 10px; /* Padding for the button */
-    cursor: pointer; /* Changes cursor to pointer */
-    font-size: 14px; /* Sets font size for the button */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    background-color: #28a745; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: background-color 0.3s; 
 }
 
 .btn-logout:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838;
 }
 
 /* Основные стили для body и шрифтов */
@@ -309,10 +341,10 @@ input[type="range"]::-webkit-slider-thumb {
     width: 100%; /* Ширина на 100% от контейнера */
     object-fit: cover; /* Заполнение контейнера, сохраняя пропорции */
 }
-/*Достижения*/
 #achievements {
+    background-color: transparent; /* Убираем цвет фона */
+    color: #b39ddb; /* Цвет текста для темной темы */
     padding: 50px 0;
-    background-color: #f9f9f9;
 }
 
 .achievement-counters {
@@ -323,19 +355,21 @@ input[type="range"]::-webkit-slider-thumb {
 
 .achievement {
     text-align: center;
+    color: #b39ddb; /* Цвет текста */
 }
 
 .achievement h3 {
     font-size: 2.5rem;
-    color: #16a085;
+    color: #1abc9c; /* Цвет для чисел */
     margin: 0;
 }
 
 .achievement p {
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #000000; /* Цвет для описания */
     margin-top: 5px;
 }
+
 /* Заголовок раздела */
 #forum-title {
     font-size: 2rem;
@@ -422,24 +456,42 @@ input[type="range"]::-webkit-slider-thumb {
 }
 /* Основной стиль для секции */
 #study-materials {
-    background-color: #f0f4f8;
-    padding: 40px 20px;
-    border-radius: 10px;
+    background-color: transparent; /* Убираем цвет фона */
+    color: #000000; /* Цвет текста для темной темы */
+    padding: 50px 20px;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
-.section-title {
-    font-size: 2rem;
-    color: #16a085;
-    margin-bottom: 10px;
+.materials-image-container {
+    margin: 20px auto;
+    display: inline-block;
 }
 
-.section-description {
+.materials-image {
+    max-width: 100%;
+    border-radius: 0; /* Убираем закругленные углы, если были */
+    box-shadow: none; /* Убираем тень */
+}
+
+.quote {
+    font-style: italic;
+    color: #ccc; /* Цвет для цитаты */
     font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 20px;
+    margin: 20px 0;
+}
+
+.btn-custom {
+    display: inline-block;
+    color: #fff;
+    background-color: #1abc9c;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #16a085;
 }
 
 /* Стили для изображения */
@@ -580,7 +632,7 @@ section:nth-child(4) {
     font-weight: bold;
     color: #555;
 }
-/* Стили для раздела "Напиши свой отзыв" */
+/*"Напиши свой отзыв" */
 #write-review {
     padding: 50px 20px;
     text-align: center;
@@ -617,12 +669,12 @@ section:nth-child(4) {
     font-size: 1rem;
     outline: none;
     transition: border-color 0.3s;
-    background-color: transparent; /* Убираем задний фон */
+    background-color: transparent; /* Убрал Задний фон */
 }
 
 #reviewForm input:focus,
 #reviewForm textarea:focus {
-    border-bottom: 2px solid #16a085; /* Подсветка при фокусе */
+    border-bottom: 2px solid #16a085; /* Подсветка */
 }
 
 #reviewForm button {
@@ -638,8 +690,144 @@ section:nth-child(4) {
 
 #reviewForm button:hover {
     background-color: #1abc9c;
-    transform: translateY(-3px); /* Легкий подъем при наведении */
+    transform: translateY(-3px); /* Наведение */
+}
+#ent-subjects {
+    padding: 40px 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin-top: 30px;
 }
 
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
+.filter-options {
+    flex: 1;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    flex: 2;
+}
+
+#teacher-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#teacher-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#subject-info {
+    font-size: 1.1em;
+    color: #333;
+    text-align: center;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 25px;
+    right: 700px; /* Сдвигаем кнопку левее */
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+    outline: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Rotate Animation */
+.theme-toggle.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease;
+}
+
+/* Fade Animation for Icon */
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.theme-toggle i {
+    animation: fade 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+/* Light and Dark Icons */
+.fa-sun {
+    color: #f39c12;
+}
+
+.fa-moon {
+    color: #3498db;
+}
 
