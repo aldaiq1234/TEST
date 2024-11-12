@@ -14,14 +14,12 @@
             margin: 0;
             padding: 0;
         }
-
         h1 {
             text-align: center;
             color: #16a085;
             margin-top: 20px;
             font-size: 2rem;
         }
-
         /* Стили для контейнера с контактами */
         .container {
             display: flex;
@@ -31,7 +29,6 @@
             flex-wrap: wrap;
             padding: 20px;
         }
-
         .column {
             width: 280px;
             padding: 20px;
@@ -41,24 +38,20 @@
             text-align: center;
             transition: transform 0.3s;
         }
-
         .column:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
-
         .column h2 {
             color: #16a085;
             font-size: 1.4rem;
             margin-bottom: 10px;
         }
-
         .column p {
             font-size: 0.9rem;
             color: #555;
             margin: 5px 0;
         }
-
         /* Стили для социальных ссылок */
         .social-link {
             display: flex;
@@ -71,103 +64,28 @@
             font-weight: bold;
             transition: color 0.3s;
         }
-
         .social-link img {
             width: 35px;
             height: 35px;
             border-radius: 50%;
             transition: transform 0.3s;
         }
-
         .social-link:hover {
             color: #138d75;
         }
-
         .social-link:hover img {
             transform: scale(1.1);
         }
-
         /* Кнопка "Главная" */
         .back-home {
             text-align: center;
             margin-top: 20px;
         }
-
         .back-home a {
             color: #16a085;
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
-        }
-
-        /* Стили для всплывающей формы */
-        .popup, .overlay {
-            display: none;
-            position: fixed;
-            z-index: 10;
-        }
-
-        .popup {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .popup h2 {
-            margin-top: 0;
-            color: #16a085;
-        }
-
-        .popup input[type="text"],
-        .popup input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .popup button {
-            padding: 10px 20px;
-            background-color: #16a085;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .popup button.close-btn {
-            background-color: #dc3545;
-            margin-top: 10px;
-        }
-
-        .popup button:hover {
-            background-color: #138d75;
-        }
-
-        /* Full-page overlay */
-        .overlay {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        /* Error message */
-        .error {
-            color: red;
-            display: none;
-            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -176,32 +94,68 @@
         <h1>Contact Us</h1>
     </header>
 
-    <div class="container">
-        <div class="column">
-            <h2>Eskerbek Alla-Adil</h2>
-            <p>Email: aeskerbek5@gmail.com</p>
-            <a href="https://t.me/eskerbek" class="social-link"><img src="tg.png" alt="Telegram">Telegram</a>
-            <a href="https://www.instagram.com/eskerbek/" class="social-link"><img src="inst.png" alt="Instagram">Instagram</a>
-        </div>
-        <div class="column">
-            <h2>Bayanov Zhanibek</h2>
-            <p>Email: janikbayan@gmail.com</p>
-            <a href="https://t.me/zhanb6" class="social-link"><img src="tg.png" alt="Telegram">Telegram</a>
-            <a href="https://www.instagram.com/zhony978/" class="social-link"><img src="inst.png" alt="Instagram">Instagram</a>
-        </div>
-        <div class="column">
-            <h2>Maratov Adilkhan</h2>
-            <p>Email: AdilkhanM@gmail.com</p>
-            <a href="https://t.me/aratovmadilkhan" class="social-link"><img src="tg.png" alt="Telegram">Telegram</a>
-            <a href="https://www.instagram.com/doomed.m/" class="social-link"><img src="inst.png" alt="Instagram">Instagram</a>
-        </div>
-    </div>
+    <div class="container" id="contacts"></div>
 
     <div class="back-home">
         <a href="index.html">Главная</a>
     </div>
     <script src="theme.js"></script>
+    <script>
+        // Данные контактов
+        const contacts = [
+            
+            { name: "Eskerbek Alla-Adil", email: "aeskerbek5@gmail.com", telegram: "https://t.me/eskerbek", instagram: "https://www.instagram.com/eskerbek/" },
+            { name: "Bayanov Zhanibek", email: "janikbayan@gmail.com", telegram: "https://t.me/zhanb6", instagram: "https://www.instagram.com/zhony978/" },
+            { name: "Maratov Adilkhan", email: "AdilkhanM@gmail.com", telegram: "https://t.me/aratovmadilkhan", instagram: "https://www.instagram.com/doomed.m/" }
+        ];
 
+        // Функция высшего порядка для создания ссылки на соцсети с выбором иконки через switch
+        function createSocialLink(url, type) {
+            const iconSrc = getIcon(type);
+            const link = document.createElement("a");
+            link.href = url;
+            link.className = "social-link";
+            link.innerHTML = `<img src="${iconSrc}" alt="${type}">${capitalize(type)}`;
+            return link;
+        }
 
+        // Switch для выбора иконки
+        function getIcon(type) {
+            switch (type) {
+                case "telegram":
+                    return "tg.png"; 
+                case "instagram":
+                    return "inst.png";  
+                case "Twitter":
+                    return "twitter.png";
+                default:
+                    return "";
+            }
+        }
+
+        // Функция для создания контактов
+        function displayContacts(contacts) {
+            const container = document.getElementById("contacts");
+            contacts.forEach(contact => {
+                const column = document.createElement("div");
+                column.className = "column";
+                column.innerHTML = `
+                    <h2>${contact.name}</h2>
+                    <p>Email: ${contact.email}</p>
+                `;
+                column.appendChild(createSocialLink(contact.telegram, "telegram"));
+                column.appendChild(createSocialLink(contact.instagram, "instagram"));
+                container.appendChild(column);
+            });
+        }
+
+        // Вспомогательная функция для капитализации текста
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+
+        // Выводим контакты на страницу
+        displayContacts(contacts);
+    </script>
 </body>
 </html>
