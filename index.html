@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,62 +24,67 @@
                     <li class="nav-item"><a class="nav-link" href="#news">Новости</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
                 </ul>
+               
+                
+
                 <div id="authLinks" class="ml-auto">
                     <a class="btn btn-primary btn-sm" href="login.html">Вход</a>
                     <a class="btn btn-secondary btn-sm" href="reg.html">Регистрация</a>
                 </div>
                 <div id="userInfo" class="user-info-inline" style="display: none;">
-                    <span id="userName" class="user-name"></span>
-                    <span id="userRole" class="user-role"></span>
-                    <span id="userInterest" class="user-interest"></span>
-                    <button onclick="logout()" class="btn btn-logout">Выйти</button>
-                </div>     
+                    <i class="fas fa-user-circle" style="font-size: 24px; cursor: pointer;" onclick="openProfile()"></i>
+                    <span id="userName" class="user-name" style="margin-right: 10px;"></span>
+                    <span id="userRole" class="user-role" style="margin-right: 10px;"></span>
+                    <button onclick="logout()" class="btn btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
                 
+
+                <!-- Модальное окно профиля -->
+                <div id="profileModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeProfile()">&times;</span>
+                        <h2>Профиль</h2>
+                        <form id="profileForm">
+                            <label for="age">Возраст:</label>
+                            <input type="number" id="age" name="age" placeholder="Введите возраст" required>
+
+                            <label for="subject1">Первый предмет выбора:</label>
+                            <input type="text" id="subject1" name="subject1" placeholder="Введите первый предмет">
+                
+                            <label for="subject2">Второй предмет выбора:</label>
+                            <input type="text" id="subject2" name="subject2" placeholder="Введите второй предмет">
+                
+                            <label for="address">Адрес:</label>
+                            <input type="text" id="address" name="address" placeholder="Введите адрес">
+                
+                            <label for="city">Город проживания:</label>
+                            <input type="text" id="city" name="city" placeholder="Введите город">
+                
+                            <label for="phone">Номер телефона:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Введите номер телефона">
+                
+                            <button type="button" onclick="saveProfile()">Сохранить</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-  
-
-    <main class="container mt-4">
+    
+    <main class=
         <section id="home">
             <h2 align="center">Главная</h2>
             <p align="center">Добро пожаловать на наш сайт!</p>
             <section>
-                
-            
-                <div class="filter-container">
-                    <label for="user-role">Кто вы?</label>
-                    <select id="user-role">
-                        <option value="" disabled selected>Выберите вариант</option>
-                        <option value="student">Ученик</option>
-                        <option value="university-student">Студент</option>
-                        <option value="teacher">Учитель</option>
-                    </select>
-            
-                    <label for="interest">Что вас интересует?</label>
-                    <select id="interest">
-                        <option value="" disabled selected>Выберите вариант</option>
-                        <option value="work">Работа</option>
-                        <option value="study">Учеба</option>
-                        <option value="just-visiting">Просто посетил сайт</option>
-                    </select>
-            
-                    <button onclick="applyFilters()">Применить</button>
-                </div>
-                
-                <div id="filter-results" class="results-container">
-                    <!-- Filter results will be displayed here -->
-                </div>
-            </section>
-            
         </section>
 
         <section id="study-materials" class="materials-section">
             <h2>Учебные материалы</h2>
             <p>Здесь вы можете найти лекции, конспекты и учебные материалы для вашего обучения.</p>
             <div class="materials-image-container">
-                <img src="https://i.gifer.com/9zrO.gif" alt="Учебные материалы" class="materials-image">
+                <img src="https://finacademy.net/images/articles/1008/uchebnye_materialy_kursov.png" alt="Учебные материалы" class="materials-image">
             </div>
             <p class="quote">Образование — это самое мощное оружие, которое вы можете использовать, чтобы изменить мир. — Нельсон Мандела</p>
             <a href="useful.html" class="btn btn-custom">Список полезных сайтов</a>
@@ -110,40 +116,6 @@
                     </div>
                 </div>
             </section>
-             
-        <section id="tools" class="mb-4">
-            <h2>Инструменты для учебы</h2>
-            <p>Используйте наши полезные инструменты, такие как калькуляторы, планировщики задач и генераторы цитат.</p>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Калькуляторы</h5>
-                            <p class="card-text">Инструменты для быстрого расчета различных математических задач.</p>
-                            <a href="https://mathsolver.microsoft.com/ru/algebra-calculator" class="btn btn-link">Посетите калькулятор</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Планировщики задач</h5>
-                            <p class="card-text">Программы для организации и управления задачами.</p>
-                            <a href="https://miro.com/ru/" class="btn btn-link">Удобный планировщик</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Генераторы цитат</h5>
-                            <p class="card-text">Инструменты для создания случайных цитат и высказываний.</p>
-                            <a href="https://www.scribbr.com/citation/generator/" class="btn btn-link">Генератор цитат и референсов</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         
 
         <section id="news" class="mb-4">
@@ -192,7 +164,39 @@
                     <span class="sr-only">Следующий</span>
                 </a>
             </div>
-        </section>        
+        </section>  
+        
+        <section id="ent-subjects" class="text-center">
+            <h2>Выберите предметы для ЕНТ</h2>
+            <div class="filter-container">
+                <!-- Форма для выбора предметов и поиска -->
+                <div class="filter-options">
+                    <label for="subject-select">Предметы:</label>
+                    <select id="subject-select">
+                        <option value="" disabled selected>Выберите предмет</option>
+                        <option value="math">Математика</option>
+                        <option value="physics">Физика</option>
+                        <option value="chemistry">Химия</option>
+                        <option value="biology">Биология</option>
+                        <option value="history">История Казахстана</option>
+                        <option value="geography">География</option>
+                        <option value="english">Английский язык</option>
+                    </select>
+                    <button onclick="searchENTSubjects()">Поиск</button>
+                </div>
+        
+                <!-- Блок для отображения результатов поиска -->
+                <div class="search-results">
+                    <div id="teacher-photo">
+                        <!-- Фото преподавателя будет загружено здесь -->
+                    </div>
+                    <div id="subject-info">
+                        <!-- Имя преподавателя и информация о количестве мест -->
+                    </div>
+                    <button id="enrollButton" onclick="enrollStudent()" style="display: none;">Записаться</button>
+                </div>
+            </div>
+        </section>
         
         <section id="about">
             <h2 align="center">О нас</h2>
@@ -206,42 +210,160 @@
                 <img src="https://sun9-33.userapi.com/impg/kXoKtYKamSMmGXqBsSz8u3g8UHnBdL_zopAA5Q/QvoCDRevYe8.jpg?size=1080x1080&quality=96&sign=77212fb5361fbf2cf0548bdb90b97693&type=album" alt="Наш офис">
             </div>
         </section>
-        <section id="testimonials" class="text-center">
-            <h2>Отзывы наших студентов</h2>
-            <div class="testimonial-cards">
-                <div class="testimonial">
-                    <i class="fas fa-user-circle user-icon"></i>
-                    <p>"Эта школа помогла мне лучше понять сложные темы и подготовиться к экзаменам!"</p>
-                    <span>— Юрий М.</span>
-                </div>
-                <div class="testimonial">
-                    <i class="fas fa-user-circle user-icon"></i>
-                    <p>"Отличная команда! Индивидуальный подход и качественные материалы."</p>
-                    <span>— Нурдаулет Н.</span>
-                </div>
-                <div class="testimonial">
-                    <i class="fas fa-user-circle user-icon"></i>
-                    <p>"Рекомендую! Очень профессионально и увлекательно."</p>
-                    <span>— Нурдаулет К.</span>
-                </div>
-            </div>
-        </section>
-        <section id="write-review" class="text-center">
-            <h2>Напиши свой отзыв</h2>
-            <p>Мы будем рады узнать ваше мнение! Заполните форму ниже, чтобы поделиться своим отзывом о нашем проекте.</p>
-            <div class="review-form">
-                <form id="reviewForm">
-                    <input type="text" id="reviewerName" placeholder="Ваше имя" required>
-                    <textarea id="reviewText" placeholder="Ваш отзыв" rows="4" required></textarea>
-                    <button type="submit">Отправить отзыв</button>
-                </form>
-                <audio id="submitSound" src="123.mp3" preload="auto"></audio>
-            </div>
-        </section>
+       
+        <!-- Секция с отзывами -->
+    <section id="testimonials" class="text-center">
+        <h2>Отзывы наших студентов</h2>
         
         
-    </main>
+        <div class="testimonial-cards" id="testimonialCards">
+            <!-- Отзывы будут динамически добавляться сюда -->
+             
+        </div>
 
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const userName = localStorage.getItem("userName");
+            const userRole = localStorage.getItem("role");
+            
+            if (userName) {
+                document.getElementById("authLinks").style.display = "none";
+                document.getElementById("userInfo").style.display = "flex";
+                document.getElementById("userName").textContent = userName;
+                document.getElementById("userRole").textContent = userRole ? `Роль: ${userRole}` : "";
+            } else {
+                document.getElementById("authLinks").style.display = "block";
+                document.getElementById("userInfo").style.display = "none";
+            }
+        });
+
+        // Функция выхода из аккаунта
+        function logout() {
+            localStorage.removeItem("userName");
+            localStorage.removeItem("role");
+            window.location.reload();
+        }
+
+        // Функции для работы с профилем
+        function openProfile() {
+            const age = localStorage.getItem("age") || "";
+            const role = localStorage.getItem("role") || "";
+            const subject1 = localStorage.getItem("subject1") || "";
+            const subject2 = localStorage.getItem("subject2") || "";
+            const address = localStorage.getItem("address") || "";
+            const city = localStorage.getItem("city") || "";
+            const phone = localStorage.getItem("phone") || "";
+
+            document.getElementById("age").value = age;
+            document.getElementById("role").value = role;
+            document.getElementById("subject1").value = subject1;
+            document.getElementById("subject2").value = subject2;
+            document.getElementById("address").value = address;
+            document.getElementById("city").value = city;
+            document.getElementById("phone").value = phone;
+
+            document.getElementById("profileModal").style.display = "block";
+        }
+
+        function closeProfile() {
+            document.getElementById("profileModal").style.display = "none";
+        }
+
+        function saveProfile() {
+            const age = document.getElementById("age").value;
+            const role = document.getElementById("role").value;
+            const subject1 = document.getElementById("subject1").value;
+            const subject2 = document.getElementById("subject2").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const phone = document.getElementById("phone").value;
+
+            localStorage.setItem("age", age);
+            localStorage.setItem("role", role);
+            localStorage.setItem("subject1", subject1);
+            localStorage.setItem("subject2", subject2);
+            localStorage.setItem("address", address);
+            localStorage.setItem("city", city);
+            localStorage.setItem("phone", phone);
+
+            document.getElementById("userRole").textContent = role ? `Роль: ${role}` : "";
+            alert("Информация профиля сохранена!");
+            closeProfile();
+        }
+    </script>
+    <!-- Секция для добавления нового отзыва -->
+    <section id="write-review" class="text-center">
+        <h2>Напиши свой отзыв</h2>
+        <p>Мы будем рады узнать ваше мнение! Заполните форму ниже, чтобы поделиться своим отзывом о нашем проекте.</p>
+        <div class="review-form">
+            <form id="reviewForm">
+                <input type="text" id="reviewerName" placeholder="Ваше имя" required>
+                <textarea id="reviewText" placeholder="Ваш отзыв" rows="4" required></textarea>
+                <button type="submit">Отправить отзыв</button>
+            </form>
+            <audio id="submitSound" src="123.mp3" preload="auto"></audio>
+        </div>
+    </section>
+
+    <script>
+        // Функция для загрузки отзывов из localStorage и отображения на странице
+        function loadReviews() {
+            const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+            const testimonialCards = document.getElementById('testimonialCards');
+            testimonialCards.innerHTML = ''; // Очищаем перед добавлением новых отзывов
+
+            testimonials.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.classList.add('testimonial');
+                reviewElement.innerHTML = `
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <p>"${review.text}"</p>
+                    <span>— ${review.name}</span>
+                `;
+                testimonialCards.appendChild(reviewElement);
+            });
+        }
+
+        // Функция для добавления нового отзыва и сохранения в localStorage
+        function addReview(event) {
+            event.preventDefault(); // Останавливаем отправку формы
+
+            const reviewerName = document.getElementById('reviewerName').value.trim();
+            const reviewText = document.getElementById('reviewText').value.trim();
+
+            if (reviewerName && reviewText) {
+                const submitSound = document.getElementById('submitSound');
+                submitSound.play(); // Воспроизводим звук
+
+                // Создаем объект для отзыва и добавляем в localStorage
+                const newReview = { name: reviewerName, text: reviewText };
+                const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+                testimonials.push(newReview);
+                localStorage.setItem('testimonials', JSON.stringify(testimonials));
+
+                // Очищаем форму и обновляем список отзывов
+                document.getElementById('reviewForm').reset();
+                loadReviews();
+
+                alert('Спасибо за ваш отзыв!');
+            }
+        }
+
+        // Загружаем отзывы при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadReviews);
+
+        // Обработчик события для отправки формы
+        document.getElementById('reviewForm').addEventListener('submit', addReview);
+    </script>
+    
+        <section id="API" class="mb-4">
+            <h2 class="text-center mt-4">Для поиска статей и необходимых материалов с помощью API</h2>
+            <a  href="API.html">Переходи чтобы увидеть увлекательные инструменты которые помогут в твоем обучении </a>
+    </main>
+    <style></style>
+    
     <footer>
         <div class="footer-credits">
             <p>© Bayanov Zhanibek</p>
