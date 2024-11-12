@@ -7,22 +7,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <header>
     <h1>AZA School</h1>
     <nav>
         <ul>
             <li><a href="index.html">Главная</a></li>
-            <li><a href="index.html">Материалы</a></li>
-            <li><a href="index.html">Форум</a></li>
-            <li><a href="index.html">Календарь</a></li>
-            <li><a href="index.html">Инструменты для учебы</a></li>
-            <li><a href="index.html">Новости</a></li>
-            <li><a href="about us.html">О нас</a></li>
-            <li><a href="my contact.html">Поддержать</a></li>
+            <li><a href="reg.html">Регистрация</a></li>
         </ul>
     </nav>
 </header>
-<button class="theme-toggle" onclick="toggleTheme()">Сменить тему</button>
+
 <main>
     <section>
         <h2>Вход в аккаунт</h2>
@@ -33,41 +28,20 @@
                 <input type="text" id="nickname" name="nickname" placeholder="Введите никнейм" required>
 
                 <label for="password">Пароль:*</label>
-                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required minlength="8">
 
                 <button type="submit">Войти</button>
             </fieldset>
         </form>
+        <div id="loginErrorMessages" style="color: red;"></div>
         <p>Нет аккаунта? <a href="reg.html">Зарегистрируйтесь здесь</a>.</p>
     </section>
 </main>
 
 <footer>
-    <p>&copy; Bayanov Zhanibek </p>
-    <p>&copy; Eskerbek Alla-Adil </p>
-    <p>&copy; Maratov Adilkhan </p>
+    <p>&copy; AZA School</p>
 </footer>
 
-<script>
-    // Функция для проверки входа
-    function validateLogin() {
-        const nickname = document.getElementById("nickname").value;
-        const password = document.getElementById("password").value;
-
-        if (nickname && password) {
-            // Сохраняем никнейм в localStorage
-            localStorage.setItem("userName", nickname);
-
-            // Отображаем сообщение об успешном входе и перенаправляем
-            alert("Вы успешно вошли в систему!");
-            window.location.href = "index.html"; // Перенаправление на главную страницу
-            return false;
-        } else {
-            alert("Пожалуйста, введите корректные данные.");
-            return false;
-        }
-    }
-</script>
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
